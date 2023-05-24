@@ -24,7 +24,7 @@ openai.api_key = ""
 ## Usage
 Run the script by executing the following command:
 ```
-pip generator.py
+python3 generator.py
 ```
 You will be prompted to enter the description of the app you want to create and the name for the new app. Provide the necessary inputs and press Enter.
 
