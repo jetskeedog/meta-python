@@ -7,12 +7,6 @@ Before using this script, you need to have an OpenAI API key. If you don't have 
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install Meta-Python.
-
-```bash
-pip install foobar
-```
-
 ## Update API Key
 
 ```
