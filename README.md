@@ -29,9 +29,9 @@ pip install -r requirements.txt
 ```
 brew install python3
 ```
-2. brew install python3:
+2. Clone this repository:
 ```
-git clone https://github.com/jetskeedog/meta-python.git)
+git clone https://github.com/jetskeedog/meta-python.git
 ```
 3. Navigate to the directory and install the necessary Python packages:
 ```
