@@ -1,0 +1,15 @@
+# .gitpod.yml
+image:
+  file: .gitpod.Dockerfile
+
+env:
+  OPENAI_API_KEY: ${OPENAI_API_KEY}
+
+tasks:
+  - name: Start app & AI log scanner
+    init: docker-compose pull
+    command: docker-compose up
+
+ports:
+  - port: 3000
+    onOpen: open-preview
