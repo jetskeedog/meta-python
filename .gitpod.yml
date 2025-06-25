@@ -1,15 +1,18 @@
-# .gitpod.yml
-image:
-  file: .gitpod.Dockerfile
+image: gitpod/workspace-python:latest
+
+tasks:
+  - name: Install dependencies
+    init: |
+      pip install --upgrade pip
+      pip install openai
+      pip install streamlit
+  - name: Run app.py
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+
 
 env:
   OPENAI_API_KEY: ${OPENAI_API_KEY}
 
-tasks:
-  - name: Start app & AI log scanner
-    init: docker-compose pull
-    command: docker-compose up
-
 ports:
-  - port: 3000
+  - port: 8501
     onOpen: open-preview
