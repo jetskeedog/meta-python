@@ -1,3 +1,5 @@
+# .gitpod.yml
+# (You can base on a slim Python-only image or stick with the full one)
 image: gitpod/workspace-python:latest
 
 tasks:
@@ -12,6 +14,7 @@ tasks:
 
 env:
   OPENAI_API_KEY: ${OPENAI_API_KEY}
+
 
 ports:
   - port: 8501
