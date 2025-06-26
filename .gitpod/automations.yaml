@@ -1,10 +1,14 @@
 # .gitpod/automations.yaml
-tasks:
-  start-streamlit:
-    name: Start Streamlit App
-    command: |
-      streamlit run app.py \
-        --server.port 8501 \
-        --server.address 0.0.0.0
+services:
+  streamlit-app:
+    name: Streamlit App
     triggeredBy:
       - postDevcontainerStart
+    commands:
+      start: |
+        streamlit run app.py \
+          --server.port 8501 \
+          --server.address 0.0.0.0
+      ready: |
+        # health-check: exit 0 once Streamlit is up so Gitpod forwards the port
+        curl --fail http://localhost:8501/healthz || exit 1
