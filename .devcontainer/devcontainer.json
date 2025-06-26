@@ -1,11 +1,7 @@
-// .devcontainer/devcontainer.json
 {
     "name": "Python & Streamlit Workspace",
-    "image": "mcr.microsoft.com/devcontainers/python:3.11",
-    "features": {
-      "ghcr.io/devcontainers/features/python:1": {
-        "version": "3.11"
-      }
+    "build": {
+      "dockerfile": "Dockerfile"
     },
     "forwardPorts": [8501],
     "containerEnv": {
@@ -20,5 +16,6 @@
         ]
       }
     },
-    "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt"
-  }  
+    "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
+    "postStartCommand": "streamlit run app.py --server.port 8501 --server.address 0.0.0.0"
+  }
