@@ -1,15 +1,12 @@
 # .gitpod.yml
-# (You can base on a slim Python-only image or stick with the full one)
 image: gitpod/workspace-python:latest
 
 tasks:
-  - name: Install dependencies
-    init: |
+  - init: |
       pip install --upgrade pip
-      pip install openai
-      pip install streamlit
-  - name: Run app.py
-    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+      pip install -r requirements.txt
+  - command: streamlit run app.py \
+      --server.port 8501 --server.address 0.0.0.0
 
 env:
   OPENAI_API_KEY: ${OPENAI_API_KEY}
@@ -20,8 +17,8 @@ ports:
     visibility: public
     protocol: http
 
-# Enable port controller explicitly
 vscode:
   extensions:
     - ms-python.python
     - ms-python.vscode-pylance
+    - ms-python.vscode-streamlit
