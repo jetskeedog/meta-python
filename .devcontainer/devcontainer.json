@@ -1,24 +1,22 @@
-// .devcontainer/devcontainer.json
 {
-    "name": "Python & Streamlit Workspace",
-    "build": {
-      // Set build context to parent folder so root files are available
-      "context": "..",
-      "dockerfile": "Dockerfile"
-    },
+    "name": "Streamlit Dev Environment",
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",  
     "forwardPorts": [8501],
-    "containerEnv": {
-      "OPENAI_API_KEY": "${localEnv:OPENAI_API_KEY}"
+    "portsAttributes": {
+      "8501": {
+        "label": "Streamlit App",
+        "onAutoForward": "openPreview"
+      }
     },
+    "postCreateCommand": "pip install -r requirements.txt",
+    "postStartCommand": "streamlit run app.py --server.enableCORS false --server.enableXsrfProtection false",
     "customizations": {
       "vscode": {
         "extensions": [
           "ms-python.python",
-          "ms-python.vscode-pylance",
-          "ms-python.vscode-streamlit"
+          "ms-python.vscode-pylance"
         ]
       }
-    },
-    "postCreateCommand": "pip install --upgrade pip && pip install -r /workspace/requirements.txt",
-    "postStartCommand": "streamlit run app.py --server.port 8501 --server.address 0.0.0.0"
+    }
   }
+  
